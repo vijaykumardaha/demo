@@ -1,8 +1,10 @@
 pipeline {
      agent any
+     tools (nodejs "node")
      stages {
         stage("Build") {
             steps {
+                h '${WORKSPACE}/jenkins/pipeline/update-jenkins-plugins-ppln/update-plugins.sh'
                 sh "npm install"
                 sh "npm run build"
             }
